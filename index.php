@@ -54,6 +54,7 @@ if ($filtroParcheggio || $filtroVoti !== null) {
 ?>
 
 <!DOCTYPE html>
+
 <html lang="it">
 
 <head>
@@ -75,6 +76,9 @@ if ($filtroParcheggio || $filtroVoti !== null) {
         </div>
       </div>
 
+
+      <!-- Questo form permette di filtrare gli hotel in base alla presenza di parcheggio e al voto minimo. Selezionando "Solo con parcheggio" verranno mostrati solo gli hotel con parcheggio. Selezionando un voto minimo verranno mostrati solo gli hotel con un voto maggiore o uguale a quello selezionato.  -->
+
       <div class="form-group">
         <label for="vote">Voto minimo:</label>
         <select class="form-control" name="vote" id="vote">
@@ -87,12 +91,26 @@ if ($filtroParcheggio || $filtroVoti !== null) {
         </select>
       </div>
 
-      <button type="submit" class="btn btn-primary">Filtra</button>
+      <button type="submit" class="btn btn-primary btn-bg-danger">Filtra</button>
     </form>
+
+    <!-- Visualizzazione degli hotel -->
 
     <div class="row">
       <?php foreach ($hotels as $hotel) : ?>
-
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><?php echo $hotel['name']; ?></h5>
+              <p class="card-text"><?php echo $hotel['description']; ?></p>
+              <ul class="list-unstyled">
+                <li>Parcheggio: <?php echo $hotel['parking'] ? 'Sì' : 'No'; ?></li>
+                <li>Voto: <?php echo $hotel['vote']; ?></li>
+                <li>Distanza dal centro: <?php echo $hotel['distance_to_center']; ?> km</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       <?php endforeach; ?>
     </div>
 
