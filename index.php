@@ -90,6 +90,12 @@ if ($filtroParcheggio || $filtroVoti !== null) {
       <button type="submit" class="btn btn-primary">Filtra</button>
     </form>
 
+    <div class="row">
+      <?php foreach ($hotels as $hotel) : ?>
+
+      <?php endforeach; ?>
+    </div>
+
 </body>
 
 </html>
